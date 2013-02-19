@@ -21,7 +21,7 @@ prefixed: false
 		<a href="http://caniuse.com/box-shadow">Browser support</a> 
 		<a href="http://html5please.com/#box-shadow">Usage advice</a> 
 		<a href="http://www.css3files.com/shadow/#boxshadow">More info</a> 
-		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/{{page.title}}.md">Edit this</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/master/_posts/{{page.date | date: "%Y-%m-%d"}}-{{page.title}}.md">Edit this</a> 
 		<span class="feature__prefix">{{page.prefixed}}</span>
 	</footer>
 </article>
