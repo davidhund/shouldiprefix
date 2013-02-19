@@ -194,7 +194,7 @@ p { margin: 0 0 1em 0; }
 		padding: .25em .5em;
 	}
 }
-.prefix-false .feature__header {
+.prefix-true .feature__header {
 	background-color: $cl_prefix_false;
 	&:after {
 		background-color: darken($cl_prefix_false,10%);
