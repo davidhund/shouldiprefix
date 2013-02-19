@@ -1,0 +1,24 @@
+---
+title: border-radius
+url: border-radius
+prefixed: false
+---
+
+<article id="border-radius" class="feature prefix-{{page.prefixed}}">
+	<header class="feature__header">
+		<h2>border-radius</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		border-radius
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/border-radius">Browser support</a> 
+		<a href="http://html5please.com/#border-radius">Usage advice</a> 
+		<a href="http://www.css3files.com/border-radius">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/{{page.title}}.md">Edit this</a> 
+		<span class="feature__prefix">{{page.prefixed}}</span>
+	</footer>
+</article>

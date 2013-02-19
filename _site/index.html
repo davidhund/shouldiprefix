@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>When to use CSS prefixes | [SITE]</title>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+		  Design & Development by David Hund of Valued Standards:
+		  _____________________________________________________________
+
+		  W: http://valuedstandards.com
+		  E: david [AT] valuedstandards [DOT] com
+		  T: @valuedstandards
+		  T: @davidhund
+
+		- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+		<meta name="author" content="David Hund - Valued Standards"/>
+		<link rel="author" href="https://plus.google.com/u/0/117376077765230391641/posts"/>
+		<meta name="description" content="Page <DESCRIPTION>">
+
+		<!-- Microsoft’s insane IE9+ pinned site syntax: <msdn.microsoft.com/library/gg131029> -->
+		<meta name="application-name" content="[SITE]" />
+		<meta name="msapplication-starturl" content="[SITE-URL]" />
+		<meta name="msapplication-window" content="width=1024;height=600" />
+		<meta name="msapplication-navbutton-color" content="#222" />
+		<!-- Windows 8 Tile icon / colour -->
+		<meta name="msapplication-TileImage" content="/metro-tile.png" />
+		<meta name="msapplication-TileColor" content="#222" />
+
+		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/js/vendor/prism.css">
+
+		<script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>
+
+		<!-- <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script> -->
+		<!--[if lt IE 9]><script src="/static/js/vendor/html5shiv.js"></script><![endif]-->
+
+		<style type="text/css">
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		html {
+			background-color: #EEE;
+			color: #222;
+			font-family: Lucida, "Lucida Grande", sans-serif;
+		}
+		body {
+			background-color: #FFF;
+			max-width: 50em;
+			margin: 1em auto;
+			padding: 1em 2em;
+		}
+
+		a { color: #069; }
+		a:hover, a:focus, a:active {
+			color: #096;
+			text-decoration: none;
+		}
+		.filter {
+			display: inline-block;
+			background: #069;
+			color: #FFF;
+			font-size: .75em;
+			text-decoration: none;
+			margin: .5em;
+			padding: .25em 1em;
+			border: 1px solid #099;
+			border-radius: 1em;
+		}
+		.filter:hover,
+		.filter:focus,
+		.filter:active,
+		.filter.is-active {
+			background-color: #999;
+			color: #222;
+			border-color: #666;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: normal;
+			font-size: 1.5em;
+			margin: 0 0 .5em 0;
+		}
+		p { margin: 0 0 1em 0; }
+		:last-child { margin-bottom: 0; }
+
+
+		.search {
+			display: inline-block;
+			font-size: 18px;
+			width: 40%;
+			padding: .5em 1em;
+		}
+
+		#feature-list .list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.feature {
+			border-radius: .25em;
+			margin: 0 0 1em 0;
+			padding: .5em;
+			box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+		}
+		.feature.is-collapsed {
+			max-height: 3.75em;
+			overflow: hidden;
+		}
+		.feature.is-collapsed:target {
+			max-height: 30em;
+			overflow: auto;
+			border: 2px solid #DDF7FF;
+		}
+
+		.feature__header,
+		.feature__footer {
+			background: #EEE;
+			color: #FFF;
+			padding: .5em 1em;
+		}
+		.feature__description {
+			margin: 1em 0;
+		}
+		.feature__header {
+			border-radius: .25em;
+		}
+		.feature__header h2:first-letter {
+			text-transform: uppercase;
+		}
+		
+		.feature__header.is-clickable {
+			cursor: pointer;
+			padding-left: 3em;
+		}
+		.feature__header.is-clickable:before {
+			content: "━";
+			position: absolute;
+			font-size: .75em;
+			font-weight: bold;
+			color: #666;
+			top: .8em;
+			left: .75em;
+			background: #FFF;
+			border-radius: 50%;
+			padding: .5em;
+			line-height: 1;
+			box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+		}
+		.feature.is-collapsed .feature__header.is-clickable:before {
+			content: "═";
+		}
+
+		.feature__footer {
+			background-color: #999;
+			color: #FFF;
+			font-size: .75em;
+			text-align: right;
+			border-radius: 0 0 .25em .25em;
+		}
+		.feature__footer a { 
+			color: inherit; 
+			text-decoration: none;
+			display: inline-block;
+			margin-left: 1em;
+		}
+		.feature__footer a:focus,
+		.feature__footer a:hover,
+		.feature__footer a:active { color: #DDD; }
+
+		.feature__prefix { display: none; }
+
+		.prefix-true .feature__header,
+		.prefix-false .feature__header {
+			background-color: #DDF7FF;
+			color: #333;
+			position: relative;
+		}
+		.prefix-false .feature__header {
+			background-color: #CF9;
+		}
+
+		.prefix-false .feature__header:after,
+		.prefix-true .feature__header:after {
+			content: "Prefixless!";
+			font-size: .75em;
+			position: absolute;
+			right: 1.25em;
+			top: 1em;
+			background-color: #FFF;
+			border-radius: .25em;
+			padding: .25em .5em;
+		}
+		.prefix-true .feature__header:after {
+			background-color: orange;
+			content: "Prefixes";
+		}
+
+
+		</style>
+
+	</head>
+	<body class="language-css">
+
+		<p>Should I prefix? (Last updated: Tue Feb 19 16:04:04 +0100 2013)</p>
+
+		<h1 id="what-should-i-prefix">(What) Should I prefix?</h1>
+
+<p>Sometimes it is hard to remember what CSS properties to prefix. Not all prefixes are always needed and things often change. CSS Preprocessors and their mixin libraries are not always up to date (and sometimes you dont need them).</p>
+
+<p>This page has one purpose: simply show <strong><em>what</em> prefixes are needed for a CSS property</strong>. If you need more information: I&rsquo;ve linked to the awesome <a href="http://caniuse.com">caniuse.com</a> and <a href="http://html5please.com">html5please</a> (from which I took most of the info actually).</p>
+
+<p><input class="search" name="search" id="search" type="search" placeholder="Search CSS features: e.g. box-shadow" />
+<a href="#" class="filter" id="filter-prefixed">Show Prefixed</a>
+<a href="#" class="filter" id="filter-prefixless">Show Prefixless</a>
+<a href="#" class="filter" id="filter-none">Show All</a></p>
+
+<div id="feature-list">
+<ul class="list">
+
+<li><article id="transforms" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>transforms</h2>
+	</header>
+	<p class="feature__description">
+		Method of transforming an element including rotating, scaling, etc.
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  -webkit-transform: rotate(30deg);
+	     -moz-transform: rotate(30deg);
+	      -ms-transform: rotate(30deg);
+	          transform: rotate(30deg);
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/transforms">Browser support</a> 
+		<a href="http://html5please.com/#transforms">Usage advice</a> 
+		<a href="http://www.css3files.com/transform">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/transforms.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="text-shadow" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>text-shadow</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		text-shadow
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/text-shadow">Browser support</a> 
+		<a href="http://html5please.com/#text-shadow">Usage advice</a> 
+		<a href="http://www.css3files.com/text-shadow">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/text-shadow.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="text-overflow" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>text-overflow</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		text-overflow
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/text-overflow">Browser support</a> 
+		<a href="http://html5please.com/#text-overflow">Usage advice</a> 
+		<a href="http://www.css3files.com/text-overflow">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/text-overflow.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="selectors" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>selectors</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		selectors
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/selectors">Browser support</a> 
+		<a href="http://html5please.com/#selectors">Usage advice</a> 
+		<a href="http://www.css3files.com/selectors">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/selectors.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="scoped-style" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>scoped-style</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		scoped-style
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/scoped-style">Browser support</a> 
+		<a href="http://html5please.com/#scoped-style">Usage advice</a> 
+		<a href="http://www.css3files.com/scoped-style">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/scoped-style.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="regions" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>regions</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		regions
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/regions">Browser support</a> 
+		<a href="http://html5please.com/#regions">Usage advice</a> 
+		<a href="http://www.css3files.com/regions">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/regions.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="pseudo-elements" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>pseudo-elements</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		pseudo-elements
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/pseudo-elements">Browser support</a> 
+		<a href="http://html5please.com/#pseudo-elements">Usage advice</a> 
+		<a href="http://www.css3files.com/pseudo-elements">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/pseudo-elements.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="position-fixed" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>position-fixed</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		position-fixed
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/position-fixed">Browser support</a> 
+		<a href="http://html5please.com/#position-fixed">Usage advice</a> 
+		<a href="http://www.css3files.com/position-fixed">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/position-fixed.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="pointer-events" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>pointer-events</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		pointer-events
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/pointer-events">Browser support</a> 
+		<a href="http://html5please.com/#pointer-events">Usage advice</a> 
+		<a href="http://www.css3files.com/pointer-events">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/pointer-events.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="paged-media" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>paged-media</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		paged-media
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/paged-media">Browser support</a> 
+		<a href="http://html5please.com/#paged-media">Usage advice</a> 
+		<a href="http://www.css3files.com/paged-media">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/paged-media.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="opacity" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>opacity</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		opacity
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/opacity">Browser support</a> 
+		<a href="http://html5please.com/#opacity">Usage advice</a> 
+		<a href="http://www.css3files.com/opacity">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/opacity.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="multiple-backgrounds" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>multiple-backgrounds</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		multiple-backgrounds
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/multiple-backgrounds">Browser support</a> 
+		<a href="http://html5please.com/#multiple-backgrounds">Usage advice</a> 
+		<a href="http://www.css3files.com/multiple-backgrounds">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/multiple-backgrounds.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="multicolumn" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>multicolumn</h2>
+	</header>
+	<p class="feature__description">
+		Method of flowing information in multiple columns
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  -webkit-column-count: 2;
+	     -moz-column-count: 2;
+	          column-count: 2;
+
+	  -webkit-column-gap: 10px; 
+	     -moz-column-gap: 10px;  
+	          column-gap: 10px; 
+
+	  -webkit-column-rule: 1px solid #000;
+	     -moz-column-rule: 1px solid #000;
+	          column-rule: 1px solid #000;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/multicolumn">Browser support</a> 
+		<a href="http://html5please.com/#multicolumn">Usage advice</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/multicolumn.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="min-width" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>min-width</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		min-width
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/min-width">Browser support</a> 
+		<a href="http://html5please.com/#min-width">Usage advice</a> 
+		<a href="http://www.css3files.com/min-width">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/min-width.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="min-height" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>min-height</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		min-height
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/min-height">Browser support</a> 
+		<a href="http://html5please.com/#min-height">Usage advice</a> 
+		<a href="http://www.css3files.com/min-height">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/min-height.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="media-queries" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>media-queries</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		media-queries
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/media-queries">Browser support</a> 
+		<a href="http://html5please.com/#media-queries">Usage advice</a> 
+		<a href="http://www.css3files.com/media-queries">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/media-queries.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="max-width" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>max-width</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		max-width
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/max-width">Browser support</a> 
+		<a href="http://html5please.com/#max-width">Usage advice</a> 
+		<a href="http://www.css3files.com/max-width">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/max-width.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="max-height" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>max-height</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		max-height
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/max-height">Browser support</a> 
+		<a href="http://html5please.com/#max-height">Usage advice</a> 
+		<a href="http://www.css3files.com/max-height">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/max-height.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="masks" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>masks</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		masks
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/masks">Browser support</a> 
+		<a href="http://html5please.com/#masks">Usage advice</a> 
+		<a href="http://www.css3files.com/masks">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/masks.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="hyphens" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>hyphens</h2>
+	</header>
+	<p class="feature__description">
+		Method of controlling when words at the end of lines should be hyphenated using the "hyphens" property.
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  /* From: http://vlst.nl/x/e2 */
+	  -ms-word-break: break-all;
+	      word-break: break-all;
+
+	       /* Non standard for webkit */
+	       word-break: break-word;
+
+	  -webkit-hyphens: auto;
+	     -moz-hyphens: auto;
+	          hyphens: auto;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/hyphens">Browser support</a> 
+		<a href="http://html5please.com/#hyphens">Usage advice</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/hyphens.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="grids" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>grids</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		grids
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/grids">Browser support</a> 
+		<a href="http://html5please.com/#grids">Usage advice</a> 
+		<a href="http://www.css3files.com/grids">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/grids.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="gradients" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>gradients</h2>
+	</header>
+	<p class="feature__description">
+		Method of defining a linear or radial color gradient as a CSS image.
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  background: -webkit-linear-gradient(top,       #333 0%,#EEE 100%);
+	  background:    -moz-linear-gradient(top,       #333 0%,#EEE 100%);
+	  background:      -o-linear-gradient(top,       #333 0%,#EEE 100%);
+	  background:         linear-gradient(to bottom, #333 0%,#EEE 100%);
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/gradients">Browser support</a> 
+		<a href="http://html5please.com/#gradients">Usage advice</a> 
+		<a href="http://www.css3files.com/gradients">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/gradients.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="font-feature-settings" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>font-feature-settings</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		font-feature-settings
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/font-feature-settings">Browser support</a> 
+		<a href="http://html5please.com/#font-feature-settings">Usage advice</a> 
+		<a href="http://www.css3files.com/font-feature-settings">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/font-feature-settings.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="font-face" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>font-face</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		font-face
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/font-face">Browser support</a> 
+		<a href="http://html5please.com/#font-face">Usage advice</a> 
+		<a href="http://www.css3files.com/font-face">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/font-face.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="flexbox" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>flexbox</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		flexbox
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/flexbox">Browser support</a> 
+		<a href="http://html5please.com/#flexbox">Usage advice</a> 
+		<a href="http://www.css3files.com/flexbox">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/flexbox.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="filters" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>filters</h2>
+	</header>
+	<p class="feature__description">
+		Method of applying filter effects (like blur, grayscale, brightness, contrast and hue) to elements, previously only possible by using SVG.
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  -webkit-filter: grayscale(50%);
+	          filter: grayscale(50%);
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/#feat=css-filters">Browser support</a> 
+		<a href="http://html5please.com/#filters">Usage advice</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/filters.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="exclusions" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>exclusions</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		exclusions
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/exclusions">Browser support</a> 
+		<a href="http://html5please.com/#exclusions">Usage advice</a> 
+		<a href="http://www.css3files.com/exclusions">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/exclusions.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="css3-colors" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>css3-colors</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		css3-colors
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/css3-colors">Browser support</a> 
+		<a href="http://html5please.com/#css3-colors">Usage advice</a> 
+		<a href="http://www.css3files.com/css3-colors">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/css3-colors.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="calc" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>calc</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		calc
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/calc">Browser support</a> 
+		<a href="http://html5please.com/#calc">Usage advice</a> 
+		<a href="http://www.css3files.com/calc">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/calc.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="box-sizing" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>box-sizing</h2>
+	</header>
+	<p class="feature__description">
+		Method of specifying whether or not an element's borders and padding should be included in size units
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+	          box-sizing: border-box;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/box-sizing">Browser support</a> 
+		<a href="http://html5please.com/#box-sizing">Usage advice</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/box-sizing.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="box-shadow" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>box-shadow</h2>
+	</header>
+	<p class="feature__description">
+		Method of displaying an inner or outer shadow effect to elements
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  ...
+	  box-shadow: 3px 3px 0 #000;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/box-shadow">Browser support</a> 
+		<a href="http://html5please.com/#box-shadow">Usage advice</a> 
+		<a href="http://www.css3files.com/shadow/#boxshadow">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/box-shadow.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="box-reflection" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>box-reflection</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		box-reflection
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/box-reflection">Browser support</a> 
+		<a href="http://html5please.com/#box-reflection">Usage advice</a> 
+		<a href="http://www.css3files.com/box-reflection">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/box-reflection.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="border-radius" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>border-radius</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		border-radius
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/border-radius">Browser support</a> 
+		<a href="http://html5please.com/#border-radius">Usage advice</a> 
+		<a href="http://www.css3files.com/border-radius">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/border-radius.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="border-image" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>border-image</h2>
+	</header>
+	<p class="feature__description">
+		Method of using images for borders
+	</p>
+<pre class="feature__code"><code>
+	.example {
+	  -webkit-border-image: url(img.png) 10px / 20px round;
+	     -moz-border-image: url(img.png) 10px / 20px round;
+	       -o-border-image: url(img.png) 10px / 20px round;
+	          border-image: url(img.png) 10px / 20px round;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/border-image">Browser support</a> 
+		<a href="http://html5please.com/#border-image">Usage advice</a> 
+		<a href="http://www.css3files.com/border">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/border-image.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="background-image-options" class="feature prefix-false">
+	<header class="feature__header">
+		<h2>background-image-options</h2>
+	</header>
+	<p class="feature__description">
+		Description: of this CSS feature
+	</p>
+	<pre class="feature__code"><code>
+		background-image-options
+	</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/background-image-options">Browser support</a> 
+		<a href="http://html5please.com/#background-image-options">Usage advice</a> 
+		<a href="http://www.css3files.com/background-image-options">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/background-image-options.md">Edit this</a> 
+		<span class="feature__prefix">false</span>
+	</footer>
+</article>
+</li>
+
+<li><article id="animations" class="feature prefix-true">
+	<header class="feature__header">
+		<h2>Animations</h2>
+	</header>
+	<p class="feature__description">
+		Complex method of animating certain properties of an element
+	</p>
+<pre class="feature__code"><code>
+	@-webkit-keyframes MyAnimation {
+	    0% { left: 0; }	
+	   50% { left: 200px; }	
+	  100% { left: 20px; }	
+	}
+	@keyframes MyAnimation {
+	    0% { left: 0; }	
+	   50% { left: 200px; }	
+	  100% { left: 20px; }	
+	}
+
+	.example.is-animating {
+	  ...
+	  -webkit-animation: MyAnimation 2s;
+	          animation: MyAnimation 2s;
+	}
+</code></pre>
+	<footer class="feature__footer">
+		<a href="http://caniuse.com/animations">Browser support</a> 
+		<a href="http://html5please.com/#animations">Usage advice</a> 
+		<a href="http://www.css3files.com/animations">More info</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/animations.md">Edit this</a> 
+		<span class="feature__prefix">true</span>
+	</footer>
+</article>
+</li>
+
+</ul>
+</div>
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+		<script src="/static/js/vendor/prism.js"></script>
+		<script src="/static/js/vendor/list.min.js"></script>
+		<script src="/static/js/main.js"></script>
+
+		<script>
+		$(document).ready(function(){
+			// Init Toggling action
+			var $headings = $('.feature__header'),
+				toggleCls = "is-collapsed",
+				clickCls  = "is-clickable",
+				activeCls = "is-active",
+				$search   = $('.search'),
+				st;
+			$headings.addClass(clickCls).parent().toggleClass(toggleCls);
+			$headings.click(function(){
+				var $this = $(this);
+				$this.parent().toggleClass(toggleCls);
+			});
+
+			// List Magix
+			var options = {
+				valueNames: [ 'feature__header', 'feature__description', 'feature__prefix' ]
+			};
+			var featuresList = new List('feature-list', options);
+
+			// Sort alphabetically
+			featuresList.sort('feature__header', { asc: true });
+
+			// TODO: For some reason the keyup in listjs does not work??
+			$search.on('keyup', function(){
+				window.clearTimeout(st);
+				st = window.setTimeout(function(){ featuresList.search($search.val());
+				},200);
+			});
+
+			// FILTER
+			$('#filter-prefixed').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter(function(item) {
+			        if (item.values().feature__prefix == "true") {
+			            return true;
+			        } else {
+			            return false;
+			        }
+			    });
+			    return false;
+			});
+
+			$('#filter-prefixless').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter(function(item) {
+			        if (item.values().feature__prefix == "false") {
+			            return true;
+			        } else {
+			            return false;
+			        }
+			    });
+			    return false;
+			});
+			$('#filter-none').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter();
+			    return false;
+			});
+
+
+		});
+		</script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<!-- 
+		<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+		-->
+	</body>
+</html>

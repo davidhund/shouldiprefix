@@ -1,0 +1,55 @@
+/* 
+ * 
+   - Note: some stuff would already be done by Normalize.css 
+   - Use Normalize.css :)
+   - And check these out...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+!/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * MAIN STYLES for <SITE>
+ * Author: David Hund
+ * Website: http://valuedstandards.com
+ *
+ * NOTES:
+ * TODO: Most of this needs proper refactoring using my Sass 'framework'
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@import "_normalize-v2.1.0";
+@import "_variables";
+@import "_mixins";
+@import "_objects";
+@import "_general";
+
+* {
+  /* http://paulirish.com/2012/box-sizing-border-box-ftw/ */
+ 	-webkit-box-sizing: border-box;
+ 	   -moz-box-sizing: border-box; 
+ 	        box-sizing: border-box; 
+ }
+ 
+ html {
+ /* Force vertical scrollbar so that page does not 'jump' when it appears 
+    http://css-tricks.com/snippets/css/force-vertical-scrollbar/
+ */
+ overflow-y: scroll;
+ 
+ /* Hypens, 
+    but see also http://blog.kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/ 
+ */
+	-webkit-hyphens: auto;
+     -moz-hyphens: auto;
+	    -ms-hyphens: auto;
+	     -o-hyphens: auto;
+	        hyphens: auto;
+ 
+	/* http://necolas.github.com/normalize.css/2.0.1/normalize.css */
+	-webkit-text-size-adjust: 100%;
+	    -ms-text-size-adjust: 100%;
+}
+ 
+img { 
+	border: 0; 
+	-ms-interpolation-mode: bicubic; /* Better IMG resizing in IE */
+}
+a img { border: none; }

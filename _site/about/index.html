@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Page <TITLE> | [SITE]</title>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+		  Design & Development by David Hund of Valued Standards:
+		  _____________________________________________________________
+
+		  W: http://valuedstandards.com
+		  E: david [AT] valuedstandards [DOT] com
+		  T: @valuedstandards
+		  T: @davidhund
+
+		- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+		<meta name="author" content="David Hund - Valued Standards"/>
+		<link rel="author" href="https://plus.google.com/u/0/117376077765230391641/posts"/>
+		<meta name="description" content="Page <DESCRIPTION>">
+
+		<!-- Microsoft’s insane IE9+ pinned site syntax: <msdn.microsoft.com/library/gg131029> -->
+		<meta name="application-name" content="[SITE]" />
+		<meta name="msapplication-starturl" content="[SITE-URL]" />
+		<meta name="msapplication-window" content="width=1024;height=600" />
+		<meta name="msapplication-navbutton-color" content="#222" />
+		<!-- Windows 8 Tile icon / colour -->
+		<meta name="msapplication-TileImage" content="/metro-tile.png" />
+		<meta name="msapplication-TileColor" content="#222" />
+
+		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/js/vendor/prism.css">
+
+		<script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>
+
+		<!-- <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script> -->
+		<!--[if lt IE 9]><script src="/static/js/vendor/html5shiv.js"></script><![endif]-->
+
+		<style type="text/css">
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		html {
+			background-color: #EEE;
+			color: #222;
+			font-family: Lucida, "Lucida Grande", sans-serif;
+		}
+		body {
+			background-color: #FFF;
+			max-width: 50em;
+			margin: 1em auto;
+			padding: 1em 2em;
+		}
+
+		a { color: #069; }
+		a:hover, a:focus, a:active {
+			color: #096;
+			text-decoration: none;
+		}
+		.filter {
+			display: inline-block;
+			background: #069;
+			color: #FFF;
+			font-size: .75em;
+			text-decoration: none;
+			margin: .5em;
+			padding: .25em 1em;
+			border: 1px solid #099;
+			border-radius: 1em;
+		}
+		.filter:hover,
+		.filter:focus,
+		.filter:active,
+		.filter.is-active {
+			background-color: #999;
+			color: #222;
+			border-color: #666;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: normal;
+			font-size: 1.5em;
+			margin: 0 0 .5em 0;
+		}
+		p { margin: 0 0 1em 0; }
+		:last-child { margin-bottom: 0; }
+
+
+		.search {
+			display: inline-block;
+			font-size: 18px;
+			width: 40%;
+			padding: .5em 1em;
+		}
+
+		#feature-list .list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.feature {
+			border-radius: .25em;
+			margin: 0 0 1em 0;
+			padding: .5em;
+			box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+		}
+		.feature.is-collapsed {
+			max-height: 3.75em;
+			overflow: hidden;
+		}
+		.feature.is-collapsed:target {
+			max-height: 30em;
+			overflow: auto;
+			border: 2px solid #DDF7FF;
+		}
+
+		.feature__header,
+		.feature__footer {
+			background: #EEE;
+			color: #FFF;
+			padding: .5em 1em;
+		}
+		.feature__description {
+			margin: 1em 0;
+		}
+		.feature__header {
+			border-radius: .25em;
+		}
+		.feature__header h2:first-letter {
+			text-transform: uppercase;
+		}
+		
+		.feature__header.is-clickable {
+			cursor: pointer;
+			padding-left: 3em;
+		}
+		.feature__header.is-clickable:before {
+			content: "━";
+			position: absolute;
+			font-size: .75em;
+			font-weight: bold;
+			color: #666;
+			top: .8em;
+			left: .75em;
+			background: #FFF;
+			border-radius: 50%;
+			padding: .5em;
+			line-height: 1;
+			box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+		}
+		.feature.is-collapsed .feature__header.is-clickable:before {
+			content: "═";
+		}
+
+		.feature__footer {
+			background-color: #999;
+			color: #FFF;
+			font-size: .75em;
+			text-align: right;
+			border-radius: 0 0 .25em .25em;
+		}
+		.feature__footer a { 
+			color: inherit; 
+			text-decoration: none;
+			display: inline-block;
+			margin-left: 1em;
+		}
+		.feature__footer a:focus,
+		.feature__footer a:hover,
+		.feature__footer a:active { color: #DDD; }
+
+		.feature__prefix { display: none; }
+
+		.prefix-true .feature__header,
+		.prefix-false .feature__header {
+			background-color: #DDF7FF;
+			color: #333;
+			position: relative;
+		}
+		.prefix-false .feature__header {
+			background-color: #CF9;
+		}
+
+		.prefix-false .feature__header:after,
+		.prefix-true .feature__header:after {
+			content: "Prefixless!";
+			font-size: .75em;
+			position: absolute;
+			right: 1.25em;
+			top: 1em;
+			background-color: #FFF;
+			border-radius: .25em;
+			padding: .25em .5em;
+		}
+		.prefix-true .feature__header:after {
+			background-color: orange;
+			content: "Prefixes";
+		}
+
+
+		</style>
+
+	</head>
+	<body class="language-css">
+
+		<p>Should I prefix? (Last updated: Tue Feb 19 16:04:04 +0100 2013)</p>
+
+		<h1 id="about-page-example">About page example</h1>
+
+<p>A page in the <code>about</code> subfolder&hellip;</p>
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+		<script src="/static/js/vendor/prism.js"></script>
+		<script src="/static/js/vendor/list.min.js"></script>
+		<script src="/static/js/main.js"></script>
+
+		<script>
+		$(document).ready(function(){
+			// Init Toggling action
+			var $headings = $('.feature__header'),
+				toggleCls = "is-collapsed",
+				clickCls  = "is-clickable",
+				activeCls = "is-active",
+				$search   = $('.search'),
+				st;
+			$headings.addClass(clickCls).parent().toggleClass(toggleCls);
+			$headings.click(function(){
+				var $this = $(this);
+				$this.parent().toggleClass(toggleCls);
+			});
+
+			// List Magix
+			var options = {
+				valueNames: [ 'feature__header', 'feature__description', 'feature__prefix' ]
+			};
+			var featuresList = new List('feature-list', options);
+
+			// Sort alphabetically
+			featuresList.sort('feature__header', { asc: true });
+
+			// TODO: For some reason the keyup in listjs does not work??
+			$search.on('keyup', function(){
+				window.clearTimeout(st);
+				st = window.setTimeout(function(){ featuresList.search($search.val());
+				},200);
+			});
+
+			// FILTER
+			$('#filter-prefixed').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter(function(item) {
+			        if (item.values().feature__prefix == "true") {
+			            return true;
+			        } else {
+			            return false;
+			        }
+			    });
+			    return false;
+			});
+
+			$('#filter-prefixless').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter(function(item) {
+			        if (item.values().feature__prefix == "false") {
+			            return true;
+			        } else {
+			            return false;
+			        }
+			    });
+			    return false;
+			});
+			$('#filter-none').click(function(ev) {
+				ev.preventDefault();
+				$('.filter').removeClass(activeCls);
+				$(this).addClass(activeCls);
+			    featuresList.filter();
+			    return false;
+			});
+
+
+		});
+		</script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<!-- 
+		<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+		-->
+	</body>
+</html>
