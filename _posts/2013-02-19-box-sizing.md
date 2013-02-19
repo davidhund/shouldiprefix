@@ -21,7 +21,7 @@ prefixed: true
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/box-sizing">Browser support</a> 
 		<a href="http://html5please.com/#box-sizing">Usage advice</a> 
-		<a href="https://github.com/davidhund/shouldiprefix/blob/ghpages/_posts/{{page.title}}.md">Edit this</a> 
+		<a href="https://github.com/davidhund/shouldiprefix/blob/master/_posts/{{page.date | date: "%Y-%m-%d"}}-{{page.title}}.md">Edit this</a> 
 		<span class="feature__prefix">{{page.prefixed}}</span>
 	</footer>
 </article>
