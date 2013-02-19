@@ -1,7 +1,6 @@
-# My Jekyll Boilerplate
+# (What) should I prefix?
 
-This is a _simple_ boilerplate setup for Jekyll websites. It saves me setting up the same (folder-) structure every time I need a Jekyll website.
+Knowing what CSS features to prefix is hard. Things change (-OperaKit- anyone?) and documentation, even Preprocessor mixin libraries, are often out of date.
+This is simply(!) an attempt to have a handy list of CSS features and their prefixes, if any.
 
-It also adds jQuery, HTML5 Shiv and Normalize CSS and adds a Sass folder (TODO: add boilerplate `scss` code). Some of the files (`.htaccess`, `robots.txt`, favicons, etc) are taken straight from the HTML5 Boilerplate.
-
-That's all…
+It is a WIP, not complete, will contain errors blah blah
