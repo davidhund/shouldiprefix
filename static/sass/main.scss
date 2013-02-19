@@ -1,43 +1,20 @@
-/* 
- * 
-   - Note: some stuff would already be done by Normalize.css 
-   - Use Normalize.css :)
-   - And check these out...
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+$cl_white:        #FFF;
+$cl_black:        #222;
+$cl_link:         #069;
+$cl_link_hover:   #066;
 
-
-!/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * MAIN STYLES for <SITE>
- * Author: David Hund
- * Website: http://valuedstandards.com
- *
- * NOTES:
- * TODO: Most of this needs proper refactoring using my Sass 'framework'
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-@import "_normalize-v2.1.0";
-@import "_variables";
-@import "_mixins";
-@import "_objects";
-@import "_general";
+$cl_prefix_true:  #CF9;
+$cl_prefix_false: #DDF7FF;
 
 * {
-  /* http://paulirish.com/2012/box-sizing-border-box-ftw/ */
  	-webkit-box-sizing: border-box;
  	   -moz-box-sizing: border-box; 
  	        box-sizing: border-box; 
  }
  
  html {
- /* Force vertical scrollbar so that page does not 'jump' when it appears 
-    http://css-tricks.com/snippets/css/force-vertical-scrollbar/
- */
- overflow-y: scroll;
- 
- /* Hypens, 
-    but see also http://blog.kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/ 
- */
-	-webkit-hyphens: auto;
+	 overflow-y: scroll;
+ 	-webkit-hyphens: auto;
      -moz-hyphens: auto;
 	    -ms-hyphens: auto;
 	     -o-hyphens: auto;
@@ -46,10 +23,185 @@
 	/* http://necolas.github.com/normalize.css/2.0.1/normalize.css */
 	-webkit-text-size-adjust: 100%;
 	    -ms-text-size-adjust: 100%;
+
+	background-color: darken($cl_white,5%);
+	color: $cl_black;
+	font-family: Lucida, "Lucida Grande", sans-serif;
 }
- 
+body {
+	background-color: $cl_white;
+	max-width: 50em;
+	margin: 1em auto;
+	padding: 2em 3em;
+	border-radius: .5em;
+}
 img { 
 	border: 0; 
 	-ms-interpolation-mode: bicubic; /* Better IMG resizing in IE */
 }
-a img { border: none; }
+
+a { 
+	color: $cl_link; 
+	img { border: none; }
+	&:hover, 
+	&:focus, 
+	&:active {
+		color: $cl_link_hover;
+		text-decoration: none;
+	}
+}
+.lastmod {
+	font-size: .75em;
+	text-align: right;
+	color: lighten($cl_black,30%);
+}
+.filter {
+	display: inline-block;
+	background: $cl_link;
+	color: $cl_white;
+	font-size: .75em;
+	text-decoration: none;
+	margin: .5em;
+	padding: .25em 1em;
+	border: 1px solid #099;
+	border-radius: 1em;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.is-active {
+		background-color: lighten($cl_black,50%);
+		color: $cl_black;
+		border-color: lighten($cl_black,30%);
+	}
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 1.5em;
+	margin: 0 0 .5em 0;
+}
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+p { margin: 0 0 1em 0; }
+:last-child { margin-bottom: 0; }
+
+
+.search {
+	display: inline-block;
+	font-size: 18px;
+	width: 40%;
+	padding: .5em 1em;
+}
+
+#feature-list .list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.feature {
+	border-radius: .25em;
+	margin: 0 0 1em 0;
+	padding: .5em;
+	box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+
+	&.is-collapsed {
+		max-height: 3.75em;
+		overflow: hidden;
+
+		&:target {
+			max-height: 30em;
+			overflow: auto;
+			border: 2px solid #DDF7FF;
+		}
+	}
+}
+
+.feature__header,
+.feature__footer {
+	background: darken($cl_white,5%);
+	color: $cl_white;
+	padding: .5em 1em;
+}
+.feature__description {
+	margin: 1em 0;
+}
+.feature__header {
+	border-radius: .25em;
+	text-shadow: 0 1px 0 $cl_white;
+	& h2:first-letter {
+		text-transform: uppercase;
+	}
+	&.is-clickable {
+		cursor: pointer;
+		padding-left: 3em;
+		&:before {
+			content: "━";
+			position: absolute;
+			font-size: .75em;
+			font-weight: bold;
+			color: $cl_black;
+			top: .8em;
+			left: .75em;
+			background: $cl_white;
+			border-radius: 50%;
+			padding: .5em;
+			line-height: 1;
+			box-shadow: 0 0 .5em rgba(0,0,0,0.2);
+		}
+	}
+}
+.feature.is-collapsed .feature__header.is-clickable:before {
+	content: "═";
+}
+
+.feature__footer {
+	background-color: darken($cl_white,20%);
+	color: $cl_white;
+	font-size: .75em;
+	text-align: right;
+	border-radius: 0 0 .25em .25em;
+
+	& a { 
+		color: inherit; 
+		text-decoration: none;
+		display: inline-block;
+		margin-left: 1em;
+		&:focus,
+		&:hover,
+		&:active { color: darken($cl_white,30%); }
+	}
+}
+
+.feature__prefix { display: none; }
+
+.prefix-true .feature__header,
+.prefix-false .feature__header {
+	background-color: $cl_prefix_true;
+	color: $cl_black;
+	position: relative;
+	&:after {
+		content: "Prefixless!";
+		font-size: .75em;
+		position: absolute;
+		right: 1.25em;
+		top: 1em;
+		background-color: darken($cl_prefix_true,20%);
+		color: darken($cl_prefix_true,50%);
+		border-radius: .25em;
+		padding: .25em .5em;
+	}
+}
+.prefix-false .feature__header {
+	background-color: $cl_prefix_false;
+	&:after {
+		background-color: darken($cl_prefix_false,10%);
+		color: darken($cl_prefix_false,50%);
+		content: "With prefixes";
+	}
+}
+
+
+

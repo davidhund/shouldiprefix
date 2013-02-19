@@ -1,13 +1,13 @@
 ---
 layout: default
-title: (What) Should I prefix?
-pagetitle: When to use CSS prefixes
-description: Page <DESCRIPTION>
+title: What to prefix?
+pagetitle: What CSS prefixes should I use?
+description: An overview of what CSS features to prefix
 ---
 
 # {{page.title}}
 
-Sometimes it is hard to remember what CSS properties to prefix. Not all prefixes are always needed and things often change. CSS Preprocessors and their mixin libraries are not always up to date (and sometimes you dont need them).
+Sometimes it is hard to remember what CSS properties to prefix. Not all prefixes are always needed and things often change. CSS Preprocessors and their mixin libraries are not always up to date (and sometimes you don't need them).
 
 This page has one purpose: simply show **_what_ prefixes are needed for a CSS property**. If you need more information: I've linked to the awesome [caniuse.com](http://caniuse.com) and [html5please](http://html5please.com) (from which I took most of the info actually).
 
