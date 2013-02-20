@@ -34,6 +34,8 @@ $cl_prefix_true: #DDF7FF;
 	background: darken($cl_white,5%) url(../img/shattered.png) repeat 0 0;
 	color: $cl_black;
 	font-family: Lucida, "Lucida Grande", sans-serif;
+	font-size: 100%;
+	line-height: 1.5;
 }
 body {
 	background-color: $cl_white;
@@ -132,7 +134,7 @@ p { margin: 0 0 1em 0; }
 	box-shadow: 0 0 .5em rgba(0,0,0,0.2);
 
 	&.is-collapsed {
-		max-height: 3.75em;
+		max-height: 3.5em;
 		overflow: hidden;
 
 		&:target {
@@ -155,6 +157,7 @@ p { margin: 0 0 1em 0; }
 .feature__header {
 	border-radius: .25em;
 	text-shadow: 0 1px 0 $cl_white;
+	line-height: 1;
 	& h2:first-letter {
 		text-transform: uppercase;
 	}
@@ -238,7 +241,7 @@ p { margin: 0 0 1em 0; }
 }
 
 [role="contentinfo"] {
-	margin: 1em;
+	margin: 1em 0 0 0;
 	padding: 1em;
 	border-top: 1px solid lighten($cl_black,60%);
 	text-align: center;

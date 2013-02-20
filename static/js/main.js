@@ -53,7 +53,7 @@
     $search.on('keyup', function(){
         window.clearTimeout(st);
         st = window.setTimeout(function(){ featuresList.search($search.val());
-        },200);
+        },100);
     });
 
     // FILTER
