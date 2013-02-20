@@ -12,10 +12,10 @@ prefixed: false
 		Method of displaying an inner or outer shadow effect to elements
 	</p>
 <pre class="feature__code"><code>
-	.example {
-	  ...
-	  box-shadow: 3px 3px 0 #000;
-	}
+.example {
+  ...
+  box-shadow: 3px 3px 0 #000;
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/box-shadow">Browser support</a> 

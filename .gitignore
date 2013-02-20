@@ -1,2 +1,4 @@
 _BUILD
 _site
+.DS_Store
+.sass-cache

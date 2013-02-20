@@ -12,11 +12,11 @@ prefixed: true
 		Method of specifying whether or not an element's borders and padding should be included in size units
 	</p>
 <pre class="feature__code"><code>
-	.example {
-	  -webkit-box-sizing: border-box;
-	     -moz-box-sizing: border-box;
-	          box-sizing: border-box;
-	}
+.example {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/box-sizing">Browser support</a> 
