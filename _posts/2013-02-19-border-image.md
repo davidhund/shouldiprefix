@@ -12,12 +12,12 @@ prefixed: true
 		Method of using images for borders
 	</p>
 <pre class="feature__code"><code>
-	.example {
-	  -webkit-border-image: url(img.png) 10px / 20px round;
-	     -moz-border-image: url(img.png) 10px / 20px round;
-	       -o-border-image: url(img.png) 10px / 20px round;
-	          border-image: url(img.png) 10px / 20px round;
-	}
+.example {
+  -webkit-border-image: url(img.png) 10px / 20px round;
+     -moz-border-image: url(img.png) 10px / 20px round;
+       -o-border-image: url(img.png) 10px / 20px round;
+          border-image: url(img.png) 10px / 20px round;
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/border-image">Browser support</a> 

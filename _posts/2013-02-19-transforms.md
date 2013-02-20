@@ -12,12 +12,12 @@ prefixed: true
 		Method of transforming an element including rotating, scaling, etc.
 	</p>
 <pre class="feature__code"><code>
-	.example {
-	  -webkit-transform: rotate(30deg);
-	     -moz-transform: rotate(30deg);
-	      -ms-transform: rotate(30deg);
-	          transform: rotate(30deg);
-	}
+.example {
+  -webkit-transform: rotate(30deg);
+     -moz-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/transforms">Browser support</a> 

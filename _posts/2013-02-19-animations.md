@@ -12,22 +12,22 @@ prefixed: true
 		Complex method of animating certain properties of an element
 	</p>
 <pre class="feature__code"><code>
-	@-webkit-keyframes MyAnimation {
-	    0% { left: 0; }	
-	   50% { left: 200px; }	
-	  100% { left: 20px; }	
-	}
-	@keyframes MyAnimation {
-	    0% { left: 0; }	
-	   50% { left: 200px; }	
-	  100% { left: 20px; }	
-	}
+@-webkit-keyframes MyAnimation {
+    0% { left: 0; }	
+   50% { left: 200px; }	
+  100% { left: 20px; }	
+}
+@keyframes MyAnimation {
+    0% { left: 0; }	
+   50% { left: 200px; }	
+  100% { left: 20px; }	
+}
 
-	.example.is-animating {
-	  ...
-	  -webkit-animation: MyAnimation 2s;
-	          animation: MyAnimation 2s;
-	}
+.example.is-animating {
+  ...
+  -webkit-animation: MyAnimation 2s;
+          animation: MyAnimation 2s;
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/animations">Browser support</a> 

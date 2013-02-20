@@ -12,19 +12,19 @@ prefixed: true
 		Method of flowing information in multiple columns
 	</p>
 <pre class="feature__code"><code>
-	.example {
-	  -webkit-column-count: 2;
-	     -moz-column-count: 2;
-	          column-count: 2;
+.example {
+  -webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
 
-	  -webkit-column-gap: 10px; 
-	     -moz-column-gap: 10px;  
-	          column-gap: 10px; 
+  -webkit-column-gap: 10px; 
+     -moz-column-gap: 10px;  
+          column-gap: 10px; 
 
-	  -webkit-column-rule: 1px solid #000;
-	     -moz-column-rule: 1px solid #000;
-	          column-rule: 1px solid #000;
-	}
+  -webkit-column-rule: 1px solid #000;
+     -moz-column-rule: 1px solid #000;
+          column-rule: 1px solid #000;
+}
 </code></pre>
 	<footer class="feature__footer">
 		<a href="http://caniuse.com/multicolumn">Browser support</a> 
