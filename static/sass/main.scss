@@ -3,8 +3,15 @@ $cl_black:        #222;
 $cl_link:         #069;
 $cl_link_hover:   #066;
 
-$cl_prefix_true:  #CF9;
-$cl_prefix_false: #DDF7FF;
+$cl_prefix_false:  #CF9;
+$cl_prefix_true: #DDF7FF;
+
+@mixin linear-gradient($from, $to) {
+	background-image: -webkit-linear-gradient(top,       $from 0%, $to 100%);
+	background-image:    -moz-linear-gradient(top,       $from 0%, $to 100%);
+	background-image:      -o-linear-gradient(top,       $from 0%, $to 100%);
+	background-image:         linear-gradient(to bottom, $from 0%, $to 100%);
+}
 
 * {
  	-webkit-box-sizing: border-box;
@@ -24,7 +31,7 @@ $cl_prefix_false: #DDF7FF;
 	-webkit-text-size-adjust: 100%;
 	    -ms-text-size-adjust: 100%;
 
-	background-color: darken($cl_white,5%);
+	background: darken($cl_white,5%) url(../img/shattered.png) repeat 0 0;
 	color: $cl_black;
 	font-family: Lucida, "Lucida Grande", sans-serif;
 }
@@ -33,7 +40,8 @@ body {
 	max-width: 50em;
 	margin: 1em auto;
 	padding: 2em 3em;
-	border-radius: .5em;
+	border-radius: .125em;
+	box-shadow: 0 0 3px 0 rgba(0,0,0,0.3)
 }
 img { 
 	border: 0; 
@@ -54,25 +62,41 @@ a {
 	font-size: .75em;
 	text-align: right;
 	color: lighten($cl_black,30%);
+	a { color: inherit; }
 }
+.prefixme {
+	color: #666;
+	font-style: normal;
+	&:before,
+	&:after {
+		content: "-";
+	}
+}
+.search-features {
+	margin: 2em 0 1em 0;
+	text-align: center;
+}
+
 .filter {
 	display: inline-block;
-	background: $cl_link;
+	background-color: $cl_link;
+	@include linear-gradient($cl_link, lighten($cl_link,10%));
 	color: $cl_white;
 	font-size: .75em;
 	text-decoration: none;
 	margin: .5em;
 	padding: .25em 1em;
-	border: 1px solid #099;
-	border-radius: 1em;
+	border: 1px solid $cl_link;
+	border-radius: .25em;
 
 	&:hover,
 	&:focus,
 	&:active,
 	&.is-active {
 		background-color: lighten($cl_black,50%);
+		@include linear-gradient(lighten($cl_black,50%), lighten($cl_black,70%));
 		color: $cl_black;
-		border-color: lighten($cl_black,30%);
+		border: 1px solid lighten($cl_black,30%);
 	}
 }
 h1, h2, h3, h4, h5, h6 {
@@ -112,7 +136,7 @@ p { margin: 0 0 1em 0; }
 		overflow: hidden;
 
 		&:target {
-			max-height: 30em;
+			max-height: 35em;
 			overflow: auto;
 			border: 2px solid #DDF7FF;
 		}
@@ -179,29 +203,57 @@ p { margin: 0 0 1em 0; }
 
 .prefix-true .feature__header,
 .prefix-false .feature__header {
-	background-color: $cl_prefix_true;
+	background-color: darken($cl_white,20%);
 	color: $cl_black;
 	position: relative;
 	&:after {
-		content: "Prefixless!";
+		content: "";
 		font-size: .75em;
 		position: absolute;
 		right: 1.25em;
 		top: 1em;
-		background-color: darken($cl_prefix_true,20%);
-		color: darken($cl_prefix_true,50%);
 		border-radius: .25em;
 		padding: .25em .5em;
 	}
 }
+
 .prefix-true .feature__header {
-	background-color: $cl_prefix_false;
+	background-color: $cl_prefix_true;
+	@include linear-gradient($cl_prefix_true, darken($cl_prefix_true,10%));
 	&:after {
-		background-color: darken($cl_prefix_false,10%);
-		color: darken($cl_prefix_false,50%);
-		content: "With prefixes";
+		content: "Use prefixes";
+		background-color: darken($cl_prefix_true,20%);
+		color: darken($cl_prefix_true,60%);
 	}
 }
 
+.prefix-false .feature__header {
+	background-color: $cl_prefix_false;
+	@include linear-gradient($cl_prefix_false, darken($cl_prefix_false,20%));
+	&:after {
+		content: "No prefixes!";
+		background-color: lighten($cl_prefix_false,7%);
+		color: darken($cl_prefix_false,50%);
+	}
+}
 
+[role="contentinfo"] {
+	margin: 1em;
+	padding: 1em;
+	border-top: 1px solid lighten($cl_black,60%);
+	text-align: center;
+}
+
+@media only screen and (max-width: 480px) {
+	h1 { font-size: 1.5em; }
+	h2 { font-size: 1.25em; }
+	.search { width: 90%; }
+	.feature__footer a { margin-left: .3em; }
+}
+@media only screen and (max-width: 320px) {
+	html { font-size: 87.5%; }
+	h1,	h2 { font-size: 1.5em; }
+	.feature__footer a { margin-left: .2em; }
+	.feature__header:after { display: none; }
+}
 

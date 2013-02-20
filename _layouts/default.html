@@ -42,24 +42,30 @@
 	</head>
 	<body class="language-css">
 
-		<p class="lastmod">Last updated: {{site.time}}</p>
+		<header role="banner">
+			<p class="lastmod">{{site.time | date:"%d/%m/%y"}} | <a href="http://valuedstandards.com">@valuedstandards</a> |  <a href="https://github.com/davidhund/shouldiprefix/">Help me!</a></p>
+		</header>
 
 		{{content}}
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-		<script src="/static/js/vendor/prism.js"></script>
-		<script src="/static/js/vendor/list.min.js"></script>
+		<footer role="contentinfo">
+			<p>A Thing by <a href="http://valuedstandards.com">David Hund</a> — <a href="http://twitter.com/valuedstandards">@valuedstandards</a></p>
+			<p><em>Please help</em>: <a href="https://github.com/davidhund/shouldiprefix/">Github</a> | <a href="https://github.com/davidhund/shouldiprefix/issues">Issues</a></p>
+			<p><a href="#">Top</a></p>
+		</footer>
+
+		<script src="/static/js/vendor/all.min.js"></script>
 		<script src="/static/js/main.js"></script>
 
-		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-		 
-		<script>
-		var _gaq=[['_setAccount','UA-5040498-10'],['_trackPageview']];
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-5040498-10']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
 		</script>
-		
 	</body>
 </html>
