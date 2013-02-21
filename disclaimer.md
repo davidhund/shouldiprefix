@@ -11,7 +11,9 @@ description: One should decide for oneself what new CSS features to prefix
 
 The advice on this little one-pager here will be wrong. It will contain (syntax) errors and will be outdated sometimes. I _hope_ to avoid this as much as possible and I'll _try_ to keep the information correct and up-to-date but I will not manage to do this 100%. This is why I need your [help](https://github.com/davidhund/shouldiprefix/). I also need you to think for yourself (see under 'Opinionated').
 
-There are so many super-valuable resources online! Things like [can I use](http://caniuse.com) and [HTML5 Please](http://html5please.com). But these also will be outdated and incorrect at times. For this reason I decided to focus this page on a _tiny subset_ of stuff: prefixes for newer CSS features.
+There are so many super-valuable resources online! Things like [CSS3 Please](http://css3please.com/), [can I use](http://caniuse.com) and [HTML5 Please](http://html5please.com). But these also will be outdated and incorrect at times. For this reason I decided to focus this page on a _tiny subset_ of stuff: prefixes for newer CSS features.
+
+If you are looking for _cross browser CSS3 rules_ you should probably take a look at [CSS3 Please](http://css3please.com/), this page simply attempts to list the prefixes (if any) for newer CSS features in modern browser.
 
 ## Opinionated
 
