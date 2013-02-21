@@ -9,7 +9,7 @@ description: An overview of what CSS features to prefix
 
 Remembering what CSS to <i class="prefixme">prefix</i> is hard. Today browsers develop quickly (yay) and things often change (boo). Preprocessors and mixin libraries are not always up to date.
 
-This page has one purpose: simply show **_what_ prefixes are needed for a newer CSS property**. Need more information? Check the awesome [caniuse.com](http://caniuse.com) and [html5please](http://html5please.com)
+This page has one purpose: simply show **_what_ prefixes are needed for a newer CSS property**. Need more information? Check the awesome [caniuse.com](http://caniuse.com), [CSS3 Please](http://css3please.com/) and [html5please](http://html5please.com)
 
 Also: [this 'Disclaimer'…](disclaimer.html) :)
 
