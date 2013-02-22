@@ -13,13 +13,13 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-column-count: 2;
-     -moz-column-count: 2;
-          column-count: 2;
+  -webkit-column-count: 2; /* Ch, Saf, And, BB  */
+     -moz-column-count: 2; /* Fx */
+          column-count: 2; /* IE 10, Op 11.1+ */
 
-  -webkit-column-gap: 10px; 
-     -moz-column-gap: 10px;  
-          column-gap: 10px; 
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
 
   -webkit-column-rule: 1px solid #000;
      -moz-column-rule: 1px solid #000;

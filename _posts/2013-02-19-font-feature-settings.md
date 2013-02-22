@@ -13,9 +13,9 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-font-feature-settings: "liga" off, "dlig";
-     -moz-font-feature-settings: "liga=0, dlig=1";
-          font-feature-settings: "liga", "dlig";
+  -webkit-font-feature-settings: "liga" off, "dlig"; /* Ch 16-26, BB 10, And 18.0 */
+     -moz-font-feature-settings: "liga=0, dlig=1";   /* Fx 4-21 */
+          font-feature-settings: "liga", "dlig";     /* IE 10, Saf 4.0-6.0 */
 }
 </code></pre>
 	<footer class="feature__footer">

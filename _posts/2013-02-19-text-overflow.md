@@ -13,8 +13,8 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -o-text-overflow: ellipsis; /* Only for current Opera Mini */
-     text-overflow: ellipsis;
+  -o-text-overflow: ellipsis; /* Op <11, Op Mini, Op Mob <12.1 */
+     text-overflow: ellipsis; /* IE, Fx, Ch, Saf */
 }
 </code></pre>
 	<footer class="feature__footer">

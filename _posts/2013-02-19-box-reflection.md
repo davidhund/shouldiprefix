@@ -14,7 +14,7 @@ prefixed: true
 <pre class="feature__code"><code>
 /* No official feature. Avoid... */
 .example {
-  -webkit-box-reflect: below 5px url(mask.png);
+  -webkit-box-reflect: below 5px url(mask.png); /* Ch, Saf (+iOs +BB) */
 }
 </code></pre>
 	<footer class="feature__footer">
