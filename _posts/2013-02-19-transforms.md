@@ -16,7 +16,7 @@ prefixed: true
   -webkit-transform: rotate(30deg); /* Ch, Saf  */
      -moz-transform: rotate(30deg); /* Fx <16 */
       -ms-transform: rotate(30deg); /* IE 9 */
-       -o-transform: rotate(30deg); /* Op <21.1 */
+       -o-transform: rotate(30deg); /* Op <12.1 */
           transform: rotate(30deg); /* IE 10, Fx 16+, Op 12.1+ */
 }
 </code></pre>
