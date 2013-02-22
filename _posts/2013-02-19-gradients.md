@@ -15,7 +15,7 @@ prefixed: true
 .example {
   background: -webkit-linear-gradient(top,       #333 0%,#EEE 100%);
   background:    -moz-linear-gradient(top,       #333 0%,#EEE 100%);
-  background:         linear-gradient(to bottom, #333 0%,#EEE 100%);
+  background:         linear-gradient(to bottom, #333 0%,#EEE 100%); /* Fx 10+, Op 11.6+, Ch 26+, IE 10 */
 }
 </code></pre>
 	<footer class="feature__footer">

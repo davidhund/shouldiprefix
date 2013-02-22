@@ -13,9 +13,9 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-box-sizing: border-box; /* Saf <5.1, */
+     -moz-box-sizing: border-box; /* Fx */
+          box-sizing: border-box; /* Ch, Saf 5.1+, IE 8+, Op 9+  */
 }
 </code></pre>
 	<footer class="feature__footer">

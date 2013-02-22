@@ -13,10 +13,10 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-border-image: url(img.png) 10px / 20px round;
-     -moz-border-image: url(img.png) 10px / 20px round;
-       -o-border-image: url(img.png) 10px / 20px round;
-          border-image: url(img.png) 10px / 20px round;
+  -webkit-border-image: url(img.png) 10px / 20px round; /* Ch <16, Saf <6 */
+     -moz-border-image: url(img.png) 10px / 20px round; /* Fx <15 */
+       -o-border-image: url(img.png) 10px / 20px round; /* Op (not mini) */
+          border-image: url(img.png) 10px / 20px round; /* Ch 16+, Saf 6+ */
 }
 </code></pre>
 	<footer class="feature__footer">

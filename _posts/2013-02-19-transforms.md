@@ -13,10 +13,11 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-transform: rotate(30deg);
-     -moz-transform: rotate(30deg);
-      -ms-transform: rotate(30deg);
-          transform: rotate(30deg);
+  -webkit-transform: rotate(30deg); /* Ch, Saf  */
+     -moz-transform: rotate(30deg); /* Fx <16 */
+      -ms-transform: rotate(30deg); /* IE 9 */
+       -o-transform: rotate(30deg); /* Op <12.1 */
+          transform: rotate(30deg); /* IE 10, Fx 16+, Op 12.1+ */
 }
 </code></pre>
 	<footer class="feature__footer">
