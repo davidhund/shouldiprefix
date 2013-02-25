@@ -25,7 +25,7 @@ With Opera adopting the WebKit rendering engine I have/will exclude `-o-` from t
 
 ## Just use XYZ!
 
-Yes, I know jQuery can probably handle your prefix-needs ;) But I've found that even really cool tools such as [Compass](http://compass-style.org/) and [Bourbon](https://github.com/thoughtbot/bourbon) and [Prefixfree](http://lea.verou.me/prefixfree/) etc. are sometimes out-of-date. And some of use maintain our own mixin libraries or do not want to rely on Javascript.
+Yes, I know jQuery can probably handle your prefix-needs ;) But I've found that even really cool tools such as [Compass](http://compass-style.org/) and [Bourbon](https://github.com/thoughtbot/bourbon) and [Prefixfree](http://lea.verou.me/prefixfree/) etc. are sometimes out-of-date. And some of us maintain our own mixin libraries or do not want to rely on Javascript.
 
 ## Why do you hate crossbrowser CSS (IE)!?
 
