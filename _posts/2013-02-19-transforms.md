@@ -13,10 +13,8 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-transform: rotate(30deg); /* Ch, Saf  */
-     -moz-transform: rotate(30deg); /* Fx <16 */
+  -webkit-transform: rotate(30deg); /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
       -ms-transform: rotate(30deg); /* IE 9 */
-       -o-transform: rotate(30deg); /* Op <12.1 */
           transform: rotate(30deg); /* IE 10, Fx 16+, Op 12.1+ */
 }
 </code></pre>
