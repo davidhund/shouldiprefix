@@ -6,3 +6,11 @@ Knowing what CSS features to prefix is hard. Things change (-OperaKit- anyone?) 
 This is simply(!) an attempt to have a handy list of CSS features and their prefixes, if any.
 
 It is a WIP, not complete, will contain errors blah blah
+
+## Autoprefixer
+
+While having a reference page such as this project provides is neat, parsing your CSS and *automagically* inserting the proper prefixes is **awesome**.
+
+[Autoprefixer](https://github.com/postcss/autoprefixer) does exactly this: it parses CSS and adds vendor prefixes to CSS rules using values from [Can I Use](http://caniuse.com/).
+
+Seriously: look into using [@autoprefixer](https://twitter.com/autoprefixer). It works with plain CSS, Sass, Less, you name it. You can even try out [a live demo](http://simevidas.jsbin.com/gufoko/quiet)

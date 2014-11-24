@@ -13,6 +13,10 @@ The advice on this little one-pager here will be wrong. It will contain (syntax)
 
 There are so many super-valuable resources online! Things like [CSS3 Please](http://css3please.com/), [can I use](http://caniuse.com) and [HTML5 Please](http://html5please.com). But these also will be outdated and incorrect at times. For this reason I decided to focus this page on a _tiny subset_ of stuff: prefixes for newer CSS features.
 
+### Autoprefixer
+
+You should definitely take a look at [Autoprefixer](https://github.com/postcss/autoprefixer): it parses your CSS and adds vendor prefixes to CSS rules using values from [Can I Use](http://caniuse.com/). Like Magic!
+
 If you are looking for _cross browser CSS3 rules_ you should probably take a look at [CSS3 Please](http://css3please.com/), this page simply attempts to list the prefixes (if any) for newer CSS features in modern browser.
 
 ## Opinionated
