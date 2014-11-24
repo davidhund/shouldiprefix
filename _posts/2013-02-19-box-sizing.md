@@ -1,7 +1,7 @@
 ---
 title: box-sizing
 url: box-sizing
-prefixed: true
+prefixed: false
 ---
 
 <article id="box-sizing" class="feature prefix-{{page.prefixed}}">
@@ -13,8 +13,6 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -webkit-box-sizing: border-box; /* Saf <5.1, */
-     -moz-box-sizing: border-box; /* Fx */
           box-sizing: border-box; /* Ch, Saf 5.1+, IE 8+, Op 9+  */
 }
 </code></pre>

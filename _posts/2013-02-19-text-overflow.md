@@ -1,7 +1,7 @@
 ---
 title: text-overflow
 url: text-overflow
-prefixed: true
+prefixed: false
 ---
 
 <article id="text-overflow" class="feature prefix-{{page.prefixed}}">
@@ -13,7 +13,6 @@ prefixed: true
 	</p>
 <pre class="feature__code"><code>
 .example {
-  -o-text-overflow: ellipsis; /* Op <11, Op Mini, Op Mob <12.1 */
      text-overflow: ellipsis; /* IE, Fx, Ch, Saf */
 }
 </code></pre>
