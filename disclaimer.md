@@ -33,7 +33,7 @@ Yes, I know jQuery can probably handle your prefix-needs ;) But I've found that 
 
 ## Why do you hate crossbrowser CSS (IE)!?
 
-I don't. Actually: Internet Explorer 10 is pretty neat. It is also the only browser to support CSS3 Grid Layout. But: **this site does not aim to provide _cross-browser_ CSS** It's goal is to clarify which properties (still) need prefixing. It is up to you to look for (IE) work arounds like `filter` and `SVG` stuff etc.
+I don't. Actually: Internet Explorer 11 is pretty neat. IE10+ is the only browser to support CSS3 Grid Layout. But: **this site does not aim to provide _cross-browser_ CSS** It's goal is to clarify which properties (still) need prefixing. It is up to you to look for (IE) work arounds like `filter` and `SVG` stuff etc.
 
 ## This page does not deal with all CSS features!
 
