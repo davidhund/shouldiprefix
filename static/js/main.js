@@ -36,7 +36,8 @@
         st;
     $headings.addClass(clickCls).parent().toggleClass(toggleCls);
     $headings.click(function(){
-        $(this).parent().toggleClass(toggleCls);
+        var $parent = $(this).parent().toggleClass(toggleCls);
+        location.hash = $parent.attr('id');
     });
 
     // List Magix
