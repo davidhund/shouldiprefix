@@ -13,17 +13,20 @@ This page has one purpose: simply show **_what_ prefixes are needed for a newer 
 
 Also: [read this 'Disclaimer'…](disclaimer.html) :)
 
-<div class="search-features">
-	<input class="search" name="search" id="search" type="search" placeholder="Search CSS features: e.g. box-shadow" />
-	<a href="#" class="filter" id="filter-prefixed">Show Prefixed</a>
-	<a href="#" class="filter" id="filter-prefixless">Show Prefixless</a>
-	<a href="#" class="filter" id="filter-none">Show All</a>
-</div>
-
 <div id="feature-list">
-<ul class="list">
-{% for item in site.posts order:ascending %}
-<li>{{ item.content }}</li>
-{% endfor %}
-</ul>
+	<div class="search-features">
+		<input class="search"
+			name="search"
+			id="search"
+			type="search"
+			placeholder="Search CSS features: e.g. box-shadow" />
+		<button type="button" class="filter" id="filter-prefixed">Show Prefixed</button>
+		<button type="button" class="filter" id="filter-prefixless">Show Prefixless</button>
+		<button type="button" class="filter is-active" id="filter-none">Show All</button>
+	</div>
+	<ul class="list">
+		{% for item in site.posts order:ascending %}
+			<li>{{ item.content }}</li>
+		{% endfor %}
+	</ul>
 </div>
