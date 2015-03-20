@@ -1,7 +1,7 @@
-/* 
- * 
+/*
+ *
  * Your main.js code
- * 
+ *
  */
 
 // Avoid `console` errors in browsers that lack a console.
@@ -36,8 +36,8 @@
         st;
     $headings.addClass(clickCls).parent().toggleClass(toggleCls);
     $headings.click(function(){
-        var $this = $(this);
-        $this.parent().toggleClass(toggleCls);
+        var $parent = $(this).parent().toggleClass(toggleCls);
+        location.hash = $parent.attr('id');
     });
 
     // List Magix
@@ -49,47 +49,21 @@
     // Sort alphabetically
     featuresList.sort('feature__header', { asc: true });
 
-    // TODO: For some reason the keyup in listjs does not work??
-    $search.on('keyup', function(){
-        window.clearTimeout(st);
-        st = window.setTimeout(function(){ featuresList.search($search.val());
-        },100);
-    });
-
     // FILTER
-    $('#filter-prefixed').click(function(ev) {
-        ev.preventDefault();
-        $('.filter').removeClass(activeCls);
-        $(this).addClass(activeCls);
-        featuresList.filter(function(item) {
-            if (item.values().feature__prefix == "true") {
-                return true;
-            } else {
-                return false;
-            }
-        });
-        return false;
-    });
+    var filterCallbacks = {};
+    filterCallbacks['filter-prefixed'] = function(item) {
+        return item.values().feature__prefix === "true";
+    };
+    filterCallbacks['filter-prefixless'] = function(item) {
+        return item.values().feature__prefix === "false";
+    };
 
-    $('#filter-prefixless').click(function(ev) {
-        ev.preventDefault();
-        $('.filter').removeClass(activeCls);
-        $(this).addClass(activeCls);
-        featuresList.filter(function(item) {
-            if (item.values().feature__prefix == "false") {
-                return true;
-            } else {
-                return false;
-            }
-        });
-        return false;
-    });
-    $('#filter-none').click(function(ev) {
-        ev.preventDefault();
-        $('.filter').removeClass(activeCls);
-        $(this).addClass(activeCls);
-        featuresList.filter();
-        return false;
+    $('.filter').on('click', function() {
+        $(this)
+            .addClass(activeCls)
+            .siblings()
+            .removeClass(activeCls);
+        featuresList.filter(filterCallbacks[this.id]);
     });
 
 }());
