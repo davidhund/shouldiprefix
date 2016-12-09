@@ -1,7 +1,7 @@
 ---
 title: transitions
 url: transitions
-prefixed: false
+prefixed: true
 ---
 
 <article id="transitions" class="feature prefix-{{page.prefixed}}">
@@ -13,7 +13,10 @@ prefixed: false
 	</p>
 <pre class="feature__code"><code>
 .example {
-          transition: width 1s linear .2s; /* IE 10, Fx 16+, Op 12.1+ */
+          -o-transition: width 1s linear .2s; /* Op 11.6+ */
+          -webkit-transition: width 1s linear .2s; /* Ch 1 */
+          -moz-transition: width 1s linear .2s; /* Fx 4+ */
+          transition: width 1s linear .2s; /* Ch 26, IE 10, Fx 16+, Op 12.1+ */
 }
 </code></pre>
 	<footer class="feature__footer">
