@@ -17,8 +17,8 @@ prefixed: true
   background: url(image1.png), url(image2.png), url(image3.png) #FFF;
   background-clip: border-box;
   /*
-  For the not-yet-standard value of ‘text’ WebKit and Edge need `-webkit-`!
-  Firefox supports 'text' without prefixes:
+  For the not-yet-standard value of ‘text’ WebKit and Edge need -webkit-!
+  Firefox supports ‘text’ without prefixes:
   */
   -webkit-background-clip: text;
   background-clip: text;
