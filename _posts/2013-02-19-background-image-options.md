@@ -14,9 +14,12 @@ prefixed: true
 <pre class="feature__code"><code>
 .example {
   /* various options, see e.g. http://www.css3files.com/background */
-  background: url(image1.png), 2 url(image2.png), 3 url(image3.png) #FFF;
+  background: url(image1.png), url(image2.png), url(image3.png) #FFF;
   background-clip: border-box;
-  /* if value text is used for background-clip, it should be prefixed with webkit */
+  /*
+  For the not-yet-standard value of ‘text’ WebKit and Edge need `-webkit-`!
+  Firefox supports 'text' without prefixes:
+  */
   -webkit-background-clip: text;
   background-clip: text;
   background-origin: padding-box;
