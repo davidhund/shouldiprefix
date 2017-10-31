@@ -1,7 +1,7 @@
 ---
 title: background-image-options
 url: background-img-options
-prefixed: false
+prefixed: true
 ---
 
 <article id="background-image-options" class="feature prefix-{{page.prefixed}}">
@@ -16,15 +16,18 @@ prefixed: false
   /* various options, see e.g. http://www.css3files.com/background */
   background: url(image1.png), 2 url(image2.png), 3 url(image3.png) #FFF;
   background-clip: border-box;
+  /* if value text is used for background-clip, it should be prefixed with webkit */
+  -webkit-background-clip: text;
+  background-clip: text;
   background-origin: padding-box;
   background-size: cover;
 }
 </code></pre>
 	<footer class="feature__footer">
-		<a href="http://caniuse.com/background-img-opts">Browser support</a> 
-		<a href="http://html5please.com/#background-image options">Usage advice</a> 
-		<a href="http://www.css3files.com/background">More info</a> 
-		<a href="https://github.com/davidhund/shouldiprefix/blob/master/_posts/{{page.date | date: "%Y-%m-%d"}}-{{page.title}}.md">Edit this</a> 
+		<a href="http://caniuse.com/background-img-opts">Browser support</a>
+		<a href="http://html5please.com/#background-image options">Usage advice</a>
+		<a href="http://www.css3files.com/background">More info</a>
+		<a href="https://github.com/davidhund/shouldiprefix/blob/master/_posts/{{page.date | date: "%Y-%m-%d"}}-{{page.title}}.md">Edit this</a>
 		<span class="feature__prefix">{{page.prefixed}}</span>
 	</footer>
 </article>
