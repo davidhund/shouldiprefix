@@ -13,4 +13,4 @@ While having a reference page such as this project provides is neat, parsing you
 
 [Autoprefixer](https://github.com/postcss/autoprefixer) does exactly this: it parses CSS and adds vendor prefixes to CSS rules using values from [Can I Use](http://caniuse.com/).
 
-Seriously: look into using [@autoprefixer](https://twitter.com/autoprefixer). It works with plain CSS, Sass, Less, you name it. You can even try out [a live demo](http://simevidas.jsbin.com/gufoko/quiet)
+Seriously: look into using [@autoprefixer](https://twitter.com/autoprefixer). It works with plain CSS, Sass, Less, you name it. You can even try out [a live demo](https://autoprefixer.github.io/)
